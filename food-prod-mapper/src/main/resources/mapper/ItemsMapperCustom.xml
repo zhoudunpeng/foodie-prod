@@ -37,6 +37,8 @@
         on
             i.id = ii.item_id
         LEFT JOIN
+                <!--SELECT item_id,MIN(price_discount) as price_discount from items_spec GROUP BY item_id 查询商品规格中最低价格的那个商品规格
+                (因为一个商品至少会有一个商品规格但是这里需要区这个商品的商品规格中价格最低的进行展示)-->
             (SELECT item_id,MIN(price_discount) as price_discount from items_spec GROUP BY item_id) tempSpec
         on
             i.id = tempSpec.item_id

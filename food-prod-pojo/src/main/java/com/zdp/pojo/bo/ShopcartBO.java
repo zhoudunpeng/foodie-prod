@@ -8,7 +8,9 @@ public class ShopcartBO {
     private String specId;
     private String specName;
     private Integer buyCounts;
+    // 优惠价格
     private String priceDiscount;
+    // 原价
     private String priceNormal;
 
     public String getItemId() {
