@@ -43,6 +43,6 @@ public class TestTransServiceImpl implements TestTransService {
        stuService.saveParent();
        stuService.saveChildren();
 
-       int a = 1 / 0;
+       // int a = 1 / 0;
     }
 }

@@ -53,6 +53,7 @@ public class StuServiceImpl implements StuService {
 
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public void saveParent() {
         Stu stu = new Stu();
         stu.setName("parent");
@@ -60,10 +61,10 @@ public class StuServiceImpl implements StuService {
         stuMapper.insert(stu);
     }
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRED)
     public void saveChildren() {
         saveChild1();
-        // int a = 1 / 0;
+        int a = 1 / 0;
         saveChild2();
     }
 

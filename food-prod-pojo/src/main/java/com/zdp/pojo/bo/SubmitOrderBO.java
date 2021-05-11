@@ -5,10 +5,15 @@ package com.zdp.pojo.bo;
  */
 public class SubmitOrderBO {
 
+    // 买家id
     private String userId;
+    // 商品规格ids
     private String itemSpecIds;
+    // 地址id
     private String addressId;
+    // 支付方式
     private Integer payMethod;
+    // 买家留言
     private String leftMsg;
 
     public String getUserId() {
