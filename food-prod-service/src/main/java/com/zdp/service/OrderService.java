@@ -1,6 +1,7 @@
 package com.zdp.service;
 
 import com.zdp.pojo.bo.SubmitOrderBO;
+import com.zdp.pojo.vo.OrderVO;
 
 /**
  * @author sesshomaru
@@ -9,5 +10,5 @@ import com.zdp.pojo.bo.SubmitOrderBO;
 public interface OrderService {
 
     // 创建订单
-    public void createOrder(SubmitOrderBO submitOrderBO);
+    public OrderVO createOrder(SubmitOrderBO submitOrderBO);
 }

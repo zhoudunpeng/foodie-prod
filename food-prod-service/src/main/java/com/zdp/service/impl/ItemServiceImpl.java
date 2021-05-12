@@ -3,6 +3,7 @@ package com.zdp.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zdp.enums.CommentLevel;
+import com.zdp.enums.YesOrNo;
 import com.zdp.mapper.*;
 import com.zdp.pojo.*;
 import com.zdp.pojo.vo.CommentLevelCountsVO;
@@ -176,5 +177,57 @@ public class ItemServiceImpl implements ItemService {
         Collections.addAll(specIdsList, ids);
 
         return itemsMapperCustom.queryItemsBySpecIds(specIdsList);
+    }
+
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public ItemsSpec queryItemSpecById(String specId) {
+        return itemsSpecMapper.selectByPrimaryKey(specId);
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public String queryItemMainImgById(String itemId) {
+        ItemsImg itemsImg = new ItemsImg();
+        itemsImg.setItemId(itemId);
+        itemsImg.setIsMain(YesOrNo.YES.type);
+        ItemsImg result = itemsImgMapper.selectOne(itemsImg);
+        return result != null ? result.getUrl() : "";
+    }
+
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void decreaseItemSpecStock(String specId, int buyCounts) {
+
+        // synchronized 不推荐使用，集群下无用，性能低下
+        // 锁数据库: 不推荐，导致数据库性能低下
+        // 分布式锁 zookeeper redis
+
+        // lockUtil.getLock(); -- 加锁
+
+        // 1. 查询库存
+//        int stock = 10;
+
+        // 2. 判断库存，是否能够减少到0以下
+//        if (stock - buyCounts < 0) {
+        // 提示用户库存不够
+//            10 - 3 -3 - 5 = -1
+//        }
+
+        // lockUtil.unLock(); -- 解锁
+
+        // 乐观锁的方式去控制并发的扣减库存
+        /**
+         * 超卖主要体现在扣减库存的情况，这里使用剩余库存是否大于购买库存为条件充当乐观锁有限的控制了超卖的情况。
+         *  避免了先查询剩余库存再扣减库存带来的并发安全问题
+         *  如果采用先查询剩余库存再扣减库存那么就需要通过分布式锁的方式去控制这两步操作
+         *  而当前是直接将上述的两步何为一步完成
+         */
+        int result = itemsMapperCustom.decreaseItemSpecStock(specId, buyCounts);
+        if (result != 1) {
+            throw new RuntimeException("订单创建失败，原因：库存不足!");
+        }
     }
 }

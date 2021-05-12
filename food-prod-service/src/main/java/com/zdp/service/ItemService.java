@@ -97,4 +97,17 @@ public interface ItemService {
      * @return
      */
     public List<ShopcartVO> queryItemsBySpecIds(String specIds);
+
+    /**
+     * 根据规格id查询商品规格具体的信息
+     * @param specId
+     * @return
+     */
+    public ItemsSpec queryItemSpecById(String specId);
+
+
+    public String queryItemMainImgById(String itemId);
+
+    // 扣减商品库存
+    public void decreaseItemSpecStock(String specId, int buyCounts);
 }
