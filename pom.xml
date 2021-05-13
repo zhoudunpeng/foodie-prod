@@ -16,6 +16,7 @@
         <module>food-prod-mapper</module>
         <module>food-prod-service</module>
         <module>food-prod-api</module>
+        <module>foodie-payment</module>
     </modules>
 
     <parent>
