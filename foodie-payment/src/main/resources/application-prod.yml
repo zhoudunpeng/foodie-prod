@@ -1,13 +1,22 @@
 spring:
   datasource:                                             ## 数据源的相关配置
     type: com.zaxxer.hikari.HikariDataSource              # 数据源 HikariCP
-    driver-class-name: com.mysql.jdbc.Driver              # mysql驱动
-    url: jdbc:mysql://localhost:6022/itzixi-pay?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
-    username:
-    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver          # mysql驱动
+    url: jdbc:mysql://39.106.77.123:3306/itzixi-pay?useAffectedRows=true&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=UTC&useSSL=false&verifyServerCertificate=false&autoReconnct=true&autoReconnectForPools=true&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull
+    username: jrkj
+    password: jrkj123.
   redis:
-    database: 0
-    host:
-    port:
-    password:
+    #password: 123456
+    cluster:
+      nodes:
+        - 39.106.77.123:5001
+        - 39.106.77.123:5002
+        - 39.106.77.123:5003
+        - 39.106.77.123:5004
+        - 39.106.77.123:5005
+        - 39.106.77.123:5006
 
+# 开发环境 mybatis 打印日志
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
