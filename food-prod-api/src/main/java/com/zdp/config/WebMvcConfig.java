@@ -15,7 +15,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/META-INF/resources/")  // 映射swagger2
-                .addResourceLocations("file:/workspaces/images/");  // 映射本地静态资源
+                .addResourceLocations("file:E:\\workspaces\\images\\");  // 映射本地静态资源
+        // 访问时只需补全后续的地址即可
+        // 访问地址 http://localhost:8088/foodie/faces/200819F9NG5TZ0H0/face-200819F9NG5TZ0H0.png
+        // 实际地址 E:\workspaces\images\foodie\faces\200819F9NG5TZ0H0\face-200819F9NG5TZ0H0.png
     }
 
     @Bean
