@@ -1,10 +1,10 @@
 package com.zdp.service.center;
 
+
 import com.zdp.pojo.Users;
 import com.zdp.pojo.bo.center.CenterUserBO;
 
 public interface CenterUserService {
-
 
     /**
      * 根据用户id查询用户信息
@@ -27,6 +27,4 @@ public interface CenterUserService {
      * @return
      */
     public Users updateUserFace(String userId, String faceUrl);
-
-
 }

@@ -1,13 +1,13 @@
 spring:
   datasource:                                             ## 数据源的相关配置
     type: com.zaxxer.hikari.HikariDataSource              # 数据源 HikariCP
-    driver-class-name: com.mysql.cj.jdbc.Driver          # mysql驱动
-    url: jdbc:mysql://39.106.77.123:3306/itzixi-pay?useAffectedRows=true&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=UTC&useSSL=false&verifyServerCertificate=false&autoReconnct=true&autoReconnectForPools=true&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull
+    driver-class-name: com.mysql.jdbc.Driver              # mysql驱动
+    url: jdbc:mysql://39.106.77.123:3306/itzixi-pay?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
     username: jrkj
     password: jrkj123.
   redis:
     database: 0
-    host: localhost
+    host: 192.168.1.64
     port: 6379
 #    password: imooc
 

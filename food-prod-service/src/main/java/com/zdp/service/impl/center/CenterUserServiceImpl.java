@@ -13,10 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
-/**
- * @author sesshomaru
- * @date 2021/5/14
- */
 @Service
 public class CenterUserServiceImpl implements CenterUserService {
 
